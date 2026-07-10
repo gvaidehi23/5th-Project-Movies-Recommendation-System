@@ -99,25 +99,47 @@ with tab1:
 
 
 with tab2:
-             if st.button("Get recommendations"):
-                         try:
-                                     fetch_index = index_from_name(title)
+            # changes select bar color
+    
+            title  = st.selectbox("Enter movie's name:",sorted(df['title']))
+            st.markdown("""
+            <style>
+            div[data-baseweb="select"] > div {
+            background: linear-gradient(#040a70, #5310e3);
+            color: white;
+            border: 1px solid #5FA8FF;
+            border-radius: 12px;
+            }
+            </style>
+            """, unsafe_allow_html=True)
+            def index_from_name(name):
+                        movie_name = name.strip().lower().replace(' ','').replace('_','')
+                        match = df[df['title'].str.strip().str.lower().str.replace(' ','').str.replace('_','') == movie_name ]
+                        if match.empty:
+                                    return -1   
+                        return match.index[0]
+    
 
-                                     st.write("Selected movie:", title)
-                                     st.write("Selected index:", fetch_index)
-                                     st.write("CSV rows:", len(df))
-                                     st.write("Model rows:", len(model))
+            def name_from_index(i):
+                        if  (i < len(df)) and (i > 0):
+                                    return df.loc[i, 'title']
+                        return ""
+    
+             # change recommend button color
+            if st.button('Get recommendations'):
+                        fetch_index = index_from_name(title)
 
-                                     similarity_index = list(enumerate(model[fetch_index]))
-                                     similarity_index = sorted(similarity_index, key=lambda x: x[1], reverse=True)
-
-                                     for i in range(1, 6):
-                                                 final_index = similarity_index[i][0]
-                                                 st.write(i, ".", name_from_index(final_index))
-
-                         except Exception as e:
-                                     st.exception(e)
-
+            if fetch_index != -1:
+                        similarity_index  = list((enumerate(model[fetch_index])))
+                        similarity_index = sorted(similarity_index, key = lambda x:x[1], reverse = True)
+                        st.write('Because u watched ',title)
+                        st.write('You must watch following movies:')
+        
+                        for i in range (1,6):
+                                    final_index = similarity_index[i][0]
+                                    st.write(i,'. ',name_from_index(final_index))
+            else:
+                        st.write('Movie not found')
 
 with tab3:
 
