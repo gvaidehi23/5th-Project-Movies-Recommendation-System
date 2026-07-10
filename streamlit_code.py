@@ -103,17 +103,17 @@ with tab2:
                          try:
                                      fetch_index = index_from_name(title)
 
-                                                st.write("Selected movie:", title)
-                                                        st.write("Selected index:", fetch_index)
-                                                        st.write("CSV rows:", len(df))
-                                                        st.write("Model rows:", len(model))
+                                     st.write("Selected movie:", title)
+                                     st.write("Selected index:", fetch_index)
+                                     st.write("CSV rows:", len(df))
+                                     st.write("Model rows:", len(model))
 
-                                                        similarity_index = list(enumerate(model[fetch_index]))
-                                                        similarity_index = sorted(similarity_index, key=lambda x: x[1], reverse=True)
+                                     similarity_index = list(enumerate(model[fetch_index]))
+                                     similarity_index = sorted(similarity_index, key=lambda x: x[1], reverse=True)
 
-                                                        for i in range(1, 6):
-                                                            final_index = similarity_index[i][0]
-                                                            st.write(i, ".", name_from_index(final_index))
+                                     for i in range(1, 6):
+                                                 final_index = similarity_index[i][0]
+                                                 st.write(i, ".", name_from_index(final_index))
 
                          except Exception as e:
                                      st.exception(e)
