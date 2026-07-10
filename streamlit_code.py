@@ -94,7 +94,7 @@ with tab1:
 
     for col, (name, poster) in zip(cols, movies.items()):
         with col:
-            st.image(poster, use_container_width=True)
+            st.image(poster, width='stretch')
             st.markdown(f"<center><span style='color:grey;'>{name}</span></center>", unsafe_allow_html=True)
 
 
@@ -178,7 +178,7 @@ with tab3:
 
     for col, (name, poster) in zip(cols, movies.items()):
         with col:
-            st.image(poster, use_container_width=True)
+            st.image(poster,width='stretch')
             st.markdown(f"<center><span style='color:grey;'>{name}</span></center>", unsafe_allow_html=True)
 
 
@@ -218,7 +218,7 @@ with tab4:
 
     for col, (name, poster) in zip(cols, movies.items()):
         with col:
-            st.image(poster, use_container_width=True)
+            st.image(poster, width='stretch')
             st.markdown(f"<center><span style='color:grey;'>{name}</span></center>", unsafe_allow_html=True)
  
 
@@ -258,7 +258,7 @@ with tab5:
 
     for col, (name, poster) in zip(cols, movies.items()):
         with col:
-            st.image(poster, use_container_width=True)
+            st.image(poster, width='stretch')
             st.markdown(f"<center><span style='color:grey;'>{name}</span></center>", unsafe_allow_html=True)
 
 
@@ -298,7 +298,7 @@ with tab6:
 
     for col, (name, poster) in zip(cols, movies.items()):
         with col:
-            st.image(poster, use_container_width=True)
+            st.image(poster, width='stretch')
             st.markdown(f"<center><span style='color:grey;'>{name}</span></center>", unsafe_allow_html=True)
 
 
