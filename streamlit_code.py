@@ -34,7 +34,7 @@ st.markdown("""
 
 /* Background behind all tabs */
 .stTabs [data-baseweb="tab-list"]{
-    background: (#080017);
+    background: #080017;
     padding:10px;
     border-radius:15px;
     gap:8px;
