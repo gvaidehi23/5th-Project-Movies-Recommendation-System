@@ -129,17 +129,17 @@ with tab2:
             if st.button('Get recommendations'):
                         fetch_index = index_from_name(title)
 
-            if fetch_index != -1:
-                        similarity_index  = list((enumerate(model[fetch_index])))
-                        similarity_index = sorted(similarity_index, key = lambda x:x[1], reverse = True)
-                        st.write('Because u watched ',title)
-                        st.write('You must watch following movies:')
-        
-                        for i in range (1,6):
-                                    final_index = similarity_index[i][0]
-                                    st.write(i,'. ',name_from_index(final_index))
-            else:
-                        st.write('Movie not found')
+                        if fetch_index != -1:
+                                    similarity_index  = list((enumerate(model[fetch_index])))
+                                    similarity_index = sorted(similarity_index, key = lambda x:x[1], reverse = True)
+                                    st.write('Because u watched ',title)
+                                    st.write('You must watch following movies:')
+                    
+                                    for i in range (1,6):
+                                                final_index = similarity_index[i][0]
+                                                st.write(i,'. ',name_from_index(final_index))
+                        else:
+                                    st.write('Movie not found')
 
 with tab3:
 
